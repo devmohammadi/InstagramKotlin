@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "28326876209",
+    "firebase_url": "https://instagramkotlin-d593c.firebaseio.com",
+    "project_id": "instagramkotlin-d593c",
+    "storage_bucket": "instagramkotlin-d593c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28326876209:android:e77d9735e7873566d4b110",
+        "android_client_info": {
+          "package_name": "com.fmohammadi.instagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28326876209-gpq6nvdekefchdu2l6mk1669pm1ef8li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHNfvWj97Bez2JHIAUcSt2i2FsGP4XOR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28326876209-gpq6nvdekefchdu2l6mk1669pm1ef8li.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
