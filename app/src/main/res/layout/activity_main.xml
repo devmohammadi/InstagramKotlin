@@ -12,19 +12,39 @@
         android:layout_centerInParent="true"
         android:contentDescription="@string/description_image"
         android:src="@drawable/icon"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:contentDescription="@string/description_image"
             android:src="@drawable/logo" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:text="@string/login"
+            android:id="@+id/btnLogin"/>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:text="@string/register"
+            android:id="@+id/btnRegister"/>
 
     </LinearLayout>
 
