@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
 
-        btnRegister.setOnClickListener(View.OnClickListener {
+        btnRegister.setOnClickListener {
             val txtUserName: String = etUserName.text.toString().trim()
             val txtName: String = etName.text.toString().trim()
             val txtEmail: String = etEmail.text.toString().trim()
@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 registerUser(txtUserName, txtName, txtEmail, txtPassword)
             }
-        })
+        }
     }
 
     private fun registerUser(userName: String, name: String, email: String, password: String) {
