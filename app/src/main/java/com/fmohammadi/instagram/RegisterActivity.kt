@@ -1,9 +1,9 @@
 package com.fmohammadi.instagram
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -16,6 +16,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private var mRootRef: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
+    private var pd: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +24,9 @@ class RegisterActivity : AppCompatActivity() {
 
         mRootRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
+        pd = ProgressDialog(this)
 
-        login_user.setOnClickListener{
+        login_user.setOnClickListener {
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
 
@@ -43,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
                     "please enter information",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else if (txtPassword.length > 6) {
+            } else if (txtPassword.length < 6) {
                 Toast.makeText(
                     this@RegisterActivity,
                     "your password must be at least 6 characters long",
@@ -56,6 +58,35 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser(userName: String, name: String, email: String, password: String) {
-        mAuth!!.createUserWithEmailAndPassword(email, password).addOnSuccessListener { }
+        pd!!.setMessage("please wait")
+        pd!!.show()
+        mAuth!!.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
+
+            val map: HashMap<String, String> = HashMap()
+            map.put("name" , name)
+            map.put("email" , email)
+            map.put("username" , userName)
+            map.put("uid" , mAuth!!.currentUser!!.uid)
+
+            mRootRef!!.child("Users").child(mAuth!!.currentUser!!.uid).setValue(map)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        pd!!.dismiss()
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Register is Successful",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+                .addOnFailureListener {
+                    pd!!.dismiss()
+                    Toast.makeText(this@RegisterActivity, it.message, Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 }
