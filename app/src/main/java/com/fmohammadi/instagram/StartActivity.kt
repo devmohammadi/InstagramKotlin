@@ -6,6 +6,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity : AppCompatActivity() {
@@ -25,11 +26,18 @@ class StartActivity : AppCompatActivity() {
 
         btnRegister.setOnClickListener {
             startActivity(
-                Intent(
-                    this@StartActivity,
-                    RegisterActivity::class.java
-                ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                Intent(this@StartActivity, RegisterActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             )
+            finish()
+        }
+
+        btnLogin.setOnClickListener {
+            startActivity(
+                Intent(this@StartActivity, LoginActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            finish()
         }
     }
 
@@ -48,5 +56,16 @@ class StartActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(FirebaseAuth.getInstance().currentUser != null){
+            startActivity(
+                Intent(this@StartActivity, MainActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            )
+            finish()
+        }
     }
 }
