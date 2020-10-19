@@ -1,10 +1,11 @@
-package com.fmohammadi.instagram
+package com.fmohammadi.instagram.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.fmohammadi.instagram.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 

@@ -1,4 +1,4 @@
-package com.fmohammadi.instagram
+package com.fmohammadi.instagram.activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.fmohammadi.instagram.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

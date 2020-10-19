@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title=""
-        android:id="@+id/van_home"
+        android:id="@+id/nav_home"
         android:icon="@drawable/ic_action_home"/>
 
     <item android:title=""
@@ -18,6 +18,6 @@
         android:icon="@drawable/ic_action_like"/>
 
     <item android:title=""
-        android:id="@+id/profile"
+        android:id="@+id/nav_profile"
         android:icon="@drawable/ic_action_person"/>
 </menu>
