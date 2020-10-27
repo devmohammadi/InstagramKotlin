@@ -61,7 +61,7 @@
 
 
         <ImageView
-            android:id="@+id/imahe_added"
+            android:id="@+id/image_added"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="@string/description"
-            android:maxLength="5"
+            android:maxLines="5"
             app:socialFlags="hashtag|mention"
             app:hashtagColor="@color/colorPrimaryDark"
             app:mentionColor="@android:color/holo_red_dark"/>

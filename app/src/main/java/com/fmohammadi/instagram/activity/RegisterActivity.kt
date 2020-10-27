@@ -65,10 +65,12 @@ class RegisterActivity : AppCompatActivity() {
         mAuth!!.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
 
             val map: HashMap<String, String> = HashMap()
-            map.put("name" , name)
-            map.put("email" , email)
-            map.put("username" , userName)
-            map.put("uid" , mAuth!!.currentUser!!.uid)
+            map.put("name", name)
+            map.put("email", email)
+            map.put("username", userName)
+            map.put("uid", mAuth!!.currentUser!!.uid)
+            map.put("bio" , "")
+            map.put("imageUrl" , "")
 
             mRootRef!!.child("Users").child(mAuth!!.currentUser!!.uid).setValue(map)
                 .addOnCompleteListener {

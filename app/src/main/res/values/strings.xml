@@ -9,8 +9,8 @@
     <string name="password">Password</string>
     <string name="already_have_account_login">Already Have Account ? Login</string>
     <string name="you_do_not_have_an_account_register">You do not have an Account? Register</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description">Description</string>
     <string name="post">post</string>
+    <string name="search_btn">search ...</string>
 </resources>
