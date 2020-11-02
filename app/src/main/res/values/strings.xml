@@ -13,4 +13,6 @@
     <string name="description">Description</string>
     <string name="post">post</string>
     <string name="search_btn">search ...</string>
+    <string name="username">UserName</string>
+    <string name="fullname">FullName</string>
 </resources>

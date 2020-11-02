@@ -50,7 +50,7 @@ class PostActivity : AppCompatActivity() {
 
         if (imageUri != null) {
             val filePath = FirebaseStorage.getInstance().getReference("Posts")
-                .child(System.currentTimeMillis().toString() + "." + getFileExtension(imageUri!!))
+                .child(System.currentTimeMillis().toString() + ".png")
 
             filePath.putFile(imageUri!!)
                 .addOnCompleteListener { task: Task<UploadTask.TaskSnapshot> ->
@@ -104,53 +104,6 @@ class PostActivity : AppCompatActivity() {
             Toast.makeText(this@PostActivity, "No Image Selected!!", Toast.LENGTH_SHORT)
                 .show()
         }
-
-//            val uploadTask = filePath.putFile(imageUri!!)
-//            uploadTask.continueWithTask {
-//                if (!it.isSuccessful) {
-//                    throw it.exception!!
-//                }
-//                return@continueWithTask filePath.downloadUrl
-//            }.addOnCompleteListener {
-//                OnCompleteListener<Uri> {
-//                    val downloadUri: Uri? = it.result
-//                    imageUrl = downloadUri.toString()
-//                    if (it.isSuccessful) {
-//
-//                        val ref = FirebaseDatabase.getInstance().reference
-//
-//                        val postId: String? = ref.push().key
-//                        val map: HashMap<String, String> = HashMap()
-//                        map.put("postid", postId!!)
-//                        map.put("imageurl", imageUrl!!)
-//                        map.put("description", description!!.text.toString().trim())
-//                        map.put("publisher", FirebaseAuth.getInstance().uid.toString())
-//
-//                        ref.child("Posts").child(postId).setValue(map)
-//
-//                        val mHashTagRef = FirebaseDatabase.getInstance().reference.child("HashTags")
-//                        val hashTags: List<String> = description.hashtags
-//                        if (!hashTags.isEmpty()) {
-//                            for (tag in hashTags) {
-//                                map.clear()
-//                                map.put("tag", tag.toLowerCase(Locale.ROOT))
-//                                map.put("postid", postId)
-//
-//                                mHashTagRef.child(tag.toLowerCase(Locale.ROOT)).setValue(map)
-//                            }
-//                        }
-//                        progressDialog.dismiss()
-//                        startActivity(Intent(this@PostActivity, MainActivity::class.java))
-//                        finish()
-//                    }
-//
-//                }
-//            }.addOnFailureListener {
-//                Toast.makeText(this@PostActivity, it.message, Toast.LENGTH_SHORT).show()
-//            }
-//        } else {
-//            Toast.makeText(this@PostActivity, "No Image Selected!!", Toast.LENGTH_SHORT).show()
-
     }
 
     private fun getFileExtension(uri: Uri): String? {
