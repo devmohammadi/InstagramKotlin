@@ -15,4 +15,6 @@
     <string name="search_btn">search ...</string>
     <string name="username">UserName</string>
     <string name="fullname">FullName</string>
+    <string name="following">Following</string>
+    <string name="follow">Follow</string>
 </resources>
