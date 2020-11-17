@@ -17,4 +17,6 @@
     <string name="fullname">FullName</string>
     <string name="following">Following</string>
     <string name="follow">Follow</string>
+    <string name="tag">#tag</string>
+    <string name="_123_posts">123 posts</string>
 </resources>

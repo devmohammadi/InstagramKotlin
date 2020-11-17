@@ -82,6 +82,7 @@ class PostActivity : AppCompatActivity() {
                                             map.put("postid", postId)
 
                                             mHashTagRef.child(tag.toLowerCase(Locale.ROOT))
+                                                .child(postId)
                                                 .setValue(map)
                                         }
                                     }

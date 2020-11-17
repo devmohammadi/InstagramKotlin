@@ -45,11 +45,14 @@ class UserAdapter(
             userName.text = user.username
             fullName.text = user.name
 
-            Picasso.get()
-                .load(user.imageUrl)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error)
-                .into(imageProfile)
+            if(user.imageUrl != ""){
+                Picasso.get()
+                    .load(user.imageUrl)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .into(imageProfile)
+            }
+
 
             isFollowed(user.uid, btnFollow)
 
