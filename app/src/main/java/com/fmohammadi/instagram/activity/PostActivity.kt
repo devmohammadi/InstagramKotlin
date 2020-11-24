@@ -6,14 +6,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.MimeTypeMap
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fmohammadi.instagram.R
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import com.hendraanggrian.appcompat.socialview.Hashtag
+import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_post.*
@@ -125,5 +131,27 @@ class PostActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val hashTagArrayAdapter: ArrayAdapter<Hashtag> = HashtagArrayAdapter(applicationContext)
+        FirebaseDatabase.getInstance().reference.child("HashTags")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (snapshot: DataSnapshot in dataSnapshot.children) {
+                        hashTagArrayAdapter.add(snapshot.key?.let {
+                            Hashtag(
+                                it,
+                                snapshot.childrenCount.toInt()
+                            )
+                        })
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
     }
 }

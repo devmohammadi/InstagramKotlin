@@ -45,7 +45,7 @@ class UserAdapter(
             userName.text = user.username
             fullName.text = user.name
 
-            if(user.imageUrl != ""){
+            if (user.imageUrl != "") {
                 Picasso.get()
                     .load(user.imageUrl)
                     .placeholder(R.drawable.placeholder)
@@ -58,6 +58,27 @@ class UserAdapter(
 
             if (user.uid.equals(firebaseUser!!.uid))
                 btnFollow.visibility = View.GONE
+
+            holder.btnFollow.setOnClickListener {
+                if (holder.btnFollow.text.toString() == "Follow") {
+                    FirebaseDatabase.getInstance().reference.child("Follow")
+                        .child(firebaseUser!!.uid).child("following").child(user.uid.toString())
+                        .setValue(true)
+
+                    FirebaseDatabase.getInstance().reference.child("Follow")
+                        .child(user.uid.toString()).child("following").child(firebaseUser!!.uid)
+                        .setValue(true);
+                } else {
+                    FirebaseDatabase.getInstance().reference.child("Follow")
+                        .child(firebaseUser!!.uid).child("following").child(user.uid.toString())
+                        .removeValue();
+
+                    FirebaseDatabase.getInstance().reference.child("Follow")
+                        .child(user.uid.toString()).child("following").child(firebaseUser!!.uid)
+                        .removeValue();
+                }
+            }
+
         }
     }
 
