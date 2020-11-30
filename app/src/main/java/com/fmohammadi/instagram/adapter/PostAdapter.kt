@@ -32,14 +32,14 @@ class PostAdapter(
 
         var imageProfile = itemView.findViewById<CircleImageView>(R.id.profile_image)
         var postImage = itemView.findViewById<ImageView>(R.id.postImage)
-        var like = itemView.findViewById<TextView>(R.id.like)
-        var comment = itemView.findViewById<TextView>(R.id.comment)
-        var save = itemView.findViewById<TextView>(R.id.save)
-        var more = itemView.findViewById<TextView>(R.id.more)
+//        var like = itemView.findViewById<TextView>(R.id.like)
+//        var comment = itemView.findViewById<TextView>(R.id.comment)
+//        var save = itemView.findViewById<TextView>(R.id.save)
+//        var more = itemView.findViewById<TextView>(R.id.more)
 
         var userName = itemView.findViewById<TextView>(R.id.username)
-        var noOfLike = itemView.findViewById<TextView>(R.id.no_of_like)
-        var noOfComment = itemView.findViewById<TextView>(R.id.no_of_post)
+//        var noOfLike = itemView.findViewById<TextView>(R.id.no_of_like)
+//        var noOfComment = itemView.findViewById<TextView>(R.id.no_of_post)
         var author = itemView.findViewById<TextView>(R.id.author)
 
         var description = itemView.findViewById<SocialTextView>(R.id.description)

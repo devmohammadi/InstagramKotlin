@@ -28,14 +28,18 @@
                     android:layout_height="30dp"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="-20dp"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/logo"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="-20dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_inbox" />
+                    android:src="@drawable/ic_inbox"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentRight="true" />
 
             </RelativeLayout>
 
@@ -57,13 +61,13 @@
                 android:id="@+id/recycler_view_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="50dp" />
+                android:layout_marginBottom="50dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_podts"
+                android:id="@+id/recycler_view_posts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="50dp" />
+                android:layout_marginBottom="50dp" />
 
 
         </LinearLayout>
